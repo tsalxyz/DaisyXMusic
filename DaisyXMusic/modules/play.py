@@ -122,12 +122,12 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
                 await f.close()
 
     image1 = Image.open("./background.png")
-    #image2 = Image.open("./etc/foreground.png")
+    image2 = Image.open("./etc/foreground.png")
     image3 = changeImageSize(1280, 720, image1)
-    #image4 = changeImageSize(1280, 720, image2)
+    image4 = changeImageSize(1280, 720, image2)
     image5 = image3.convert("RGBA")
-    #image6 = image4.convert("RGBA")
-    Image.alpha_composite(image5).save("temp.png")
+    image6 = image4.convert("RGBA")
+    Image.alpha_composite(image5, image6).save("temp.png")
     img = Image.open("temp.png")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("etc/font.otf", 32)
@@ -564,12 +564,12 @@ async def play(_, message: Message):
         )
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
-        thumbnail = thumb_name
+        #thumb_name = "https://telegra.ph/file/45e9403e0d39c151b2ad8.png"
+        #thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
         requested_by = message.from_user.first_name
-        await generate_cover(requested_by, title, views, duration, thumbnail)
+        await generate_cover(requested_by, title, views, duration)
         file_path = await convert(
             (await message.reply_to_message.download(file_name))
             if not path.isfile(path.join("downloads", file_name))
