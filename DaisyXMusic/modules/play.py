@@ -447,7 +447,7 @@ async def m_cb(b, cb):
                 await cb.answer("Skipped")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"- Skipped track\n- Now Playing **{qeue[0][0]}**"
+                    f"- Skipped track\n- Now Playing **{qeue[0][60]}**"
                 )
 
     else:
@@ -524,7 +524,7 @@ async def play(_, message: Message):
         )
         return
     text_links=None
-    await lel.edit("🔎 **Finding**")
+    await lel.edit("🔎 **Find Music**")
     if message.reply_to_message:
         entities = []
         toxt = message.reply_to_message.text or message.reply_to_message.caption
@@ -799,7 +799,7 @@ async def ytplay(_, message: Message):
             f"<i> {user.first_name} Userbot not in this chat, Ask admin to send /play command for first time or add {user.first_name} manually</i>"
         )
         return
-    await lel.edit("🔎 **Finding**")
+    await lel.edit("🔎 **Find Music**")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
@@ -936,7 +936,7 @@ async def jiosaavn(client: Client, message_: Message):
                     # print(e)
                     await lel.edit(
                         f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                        "\n\nOr manually add @DaisyXmusic to your Group and try again</b>",
+                        "\n\nOr manually add @SxyzRobot to your Group and try again</b>",
                     )
     try:
         await USER.get_chat(chid)
@@ -951,7 +951,7 @@ async def jiosaavn(client: Client, message_: Message):
     text = message_.text.split(" ", 1)
     query = text[1]
     res = lel
-    await res.edit(f"Searching 👀👀👀 for `{query}` on jio saavn")
+    await res.edit(f"Searching 👀👀👀 for `{query}` on saavn")
     
     # ================== Copied from https://github.com/TheHamkerCat/WilliamButcherBot/blob/dev/wbb/modules/music.py line 170 ===============
     
@@ -1051,7 +1051,7 @@ async def jiosaavn(client: Client, message_: Message):
         chat_id=message_.chat.id,
         reply_markup=keyboard,
         photo="final.png",
-        caption=f"Playing {sname} Via Jiosaavn",
+        caption=f"Playing {sname} Via saavn",
     )
     os.remove("final.png")
 
